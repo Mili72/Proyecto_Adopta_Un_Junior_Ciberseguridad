@@ -117,7 +117,7 @@ lapassworddebackupmaschingonadetodas
 
 Al usar el token directamente expone una credencial, seguramente del servicio SSH.
 
-## Mitigación de la Vulnerabilidad 1
+## Mitigación de la Vulnerabilidad 
 
 - **Eliminar el token del código** → nunca debe estar escrito en claro en el script.
 - **Encriptar, hashear y/o eliminar contraseñas y credenciales** → la contraseña aparece en texto claro.
@@ -176,9 +176,9 @@ app.listen(port, '0.0.0.0', () => {
 
 Aparece la petición post al directorio */recurso/*, confirma la lectura del token exfiltrado anteriormente para aceptar la conexión al recurso, el mensaje en caso de aceptar la conexión (contraseña en texto claro del servicio SSH), y mensaje o código de estado en caso de que el token fuera incorrecto. Además, aparece el DNS de la página web *consolelog.lab*, que acepta conexiones desde cualquier IP, es decir cualquier equipo de la red puede ponerse en escucha en este equipo, lo que se expone completamente en un ataque.
 
-## Mitigación Vulnerabilidad 2
+## Mitigación Vulnerabilidad 
 
-Ejemplo de código seguro para Node.js. Crea variables de entorno almacenadas de forma segura para el Token de acceso y el secreto de backup. También establece un límite de tamaño para evitar inyección de payloads demasiado grandes contrarrestando posibles ataques DoS o desbordamientos. Y aplica validación del buffer convirtiendolo en bytes, mediante el uso de la comparación de tiempos para que el atacante no pueda conocer el tamaño del token por duración (*timing attack*) y además se requiren dos buffers del mismo tamaño 
+Ejemplo de código seguro para Node.js. Crea variables de entorno almacenadas de forma segura para el Token de acceso y el secreto de backup. También establece un límite de tamaño para evitar inyección de payloads demasiado grandes contrarrestando posibles ataques DoS o desbordamientos. Y aplica validación del buffer convirtiendolo en bytes, mediante el uso de la comparación de tiempos para que el atacante no pueda conocer el tamaño del token por duración (*timing attack*) y además se requiren dos buffers del mismo tamaño. 
 
 ```Node.js
 //server.js
