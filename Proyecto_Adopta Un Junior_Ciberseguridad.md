@@ -93,7 +93,7 @@ Se intenta entrar en el puerto del servicio web del puerto 3000 pero no logra al
 
 <img width="519" height="169" alt="Pasted image 20250915131227" src="https://github.com/user-attachments/assets/7386b589-ebff-4eed-a4c0-bacf4bc1c742" />
 
-En la web del puerto 80 aparece un botón que dice estar en fase beta. No parece que haga nada, pero al ver el origen de la página aparece un script *authenticate.js*. Y permite la lectura del contenido de dicho script.
+En la web del puerto 80 aparece un botón que dice estar en fase beta. No parece que haga nada, pero al ver la fuente de la página aparece un script *authenticate.js*. Y permite la lectura del contenido de dicho script.
 
 <img width="449" height="245" alt="Pasted image 20250915131331" src="https://github.com/user-attachments/assets/24830b99-0302-421f-99be-9f85bc7b41ef" />
 
