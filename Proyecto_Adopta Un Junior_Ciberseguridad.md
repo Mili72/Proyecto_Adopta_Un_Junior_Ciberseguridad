@@ -116,7 +116,6 @@ Al usar el token directamente expone una credencial, seguramente del servicio SS
 	- Evitar total acceso de una red al recurso.
 - **Almacenar el token de forma segura**:
     - Usar variables de entorno o un gestor de claves.
-- **Eliminar el token comprometido** y generar uno nuevo con permisos mínimos.
 - **Restringir acceso al recurso oculto**:
     - Impedir que archivos internos (como scripts con lógica sensible) estén accesibles desde el navegador o expuestos a la red.
 - **Principio de menor privilegio**: el nuevo token debe ser de corta duración y con permisos limitados.
