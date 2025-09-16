@@ -1,9 +1,3 @@
-***
-## Descripción del proyecto
-
-En este caso he elegido una máquina vulnerable de la plataforma [Dockerlabs](https://dockerlabs.es), en la cuál existe un endpoint vulnerable de **Node.js**, que permite la explotación de este para conseguir acceso a la máquina. En este documento se mostrará la existencia de las vulnerabilidades, como explotarlas y como mitigarlas para mejorar la seguridad este endpoint.
-
-***
 ### Descubrimiento del Endpoint Vulnerable
 
 Se realiza un ecaneo de puertos general para ver posibles vectores de entrada.
@@ -88,19 +82,19 @@ Después de este escaneo se ve más información en los puertos que han aparecid
 
 Se intenta entrar en el puerto del servicio web del puerto 3000 pero no logra alcanzar el recurso.
 
-<img width="519" height="169" alt="Pasted image 20250915131227" src="https://github.com/user-attachments/assets/f9439fa8-fa57-4733-8a65-b7a0df75ab84" />
+<img width="519" height="169" alt="Pasted image 20250915131227" src="https://github.com/user-attachments/assets/7386b589-ebff-4eed-a4c0-bacf4bc1c742" />
 
 En la web del puerto 80 aparece un botón que dice estar en fase beta. No parece que haga nada, pero al ver el origen de la página aparece un script *authenticate.js*. Y permite la lectura del contenido de dicho script.
 
-<img width="449" height="245" alt="Pasted image 20250915131331" src="https://github.com/user-attachments/assets/9cda148b-8a06-487b-938b-2d1667372dba" />
+<img width="449" height="245" alt="Pasted image 20250915131331" src="https://github.com/user-attachments/assets/24830b99-0302-421f-99be-9f85bc7b41ef" />
 
 En el script aparece información sensible, como un token de acceso y el recurso:
 
-<img width="763" height="155" alt="Pasted image 20250915131540" src="https://github.com/user-attachments/assets/9e209e92-b8fa-442b-a0d5-6c5f3edd4360" />
+<img width="763" height="155" alt="Pasted image 20250915131540" src="https://github.com/user-attachments/assets/a27a858b-82ac-4cb2-9b35-5516b677c9b7" />
 
 Al intentar acceder al directorio */recurso/* no permite la entrada debido a la falta del token de acceso, el cuál conocemos.
 
-<img width="611" height="169" alt="Pasted image 20250915131906" src="https://github.com/user-attachments/assets/892df44a-6b16-4285-96d2-70ef37d63534" />
+<img width="611" height="169" alt="Pasted image 20250915131906" src="https://github.com/user-attachments/assets/5fa2b0c0-44c6-4334-b267-88da9389224e" />
 
 ***
 ### Explotación de la Vulnerabilidad 1 (Sensitive Data Exposure)
@@ -146,7 +140,7 @@ Starting gobuster in directory enumeration mode
 
 En el aparece información sensible, tanto de como está montado el servidor web como módulos de Node.js, los cuales podrían ser vulnerables.
 
-<img width="513" height="457" alt="Pasted image 20250915132522" src="https://github.com/user-attachments/assets/884d37d5-2154-43b3-84fa-bc926a5ed553" />
+<img width="513" height="457" alt="Pasted image 20250915132522" src="https://github.com/user-attachments/assets/c067521b-ac49-468d-91d0-0db71162cb7a" />
 
 En el archivo *server.js* aparece la siguiente información:
 
