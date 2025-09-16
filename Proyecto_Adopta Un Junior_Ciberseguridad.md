@@ -106,7 +106,7 @@ Al intentar acceder al directorio */recurso/* no permite la entrada debido a la 
 <img width="611" height="169" alt="Pasted image 20250915131906" src="https://github.com/user-attachments/assets/5fa2b0c0-44c6-4334-b267-88da9389224e" />
 
 ***
-## Explotación de la Vulnerabilidad 1 (Sensitive Data Exposure)
+## Explotación de la Vulnerabilidad (Sensitive Data Exposure)
 
 Se hace uso de la herramienta *cURL*, para ver el contenido del servicio web y confirmando el funcionamiento del Token exfiltrado.
 
@@ -130,7 +130,7 @@ Al usar el token directamente expone una credencial, seguramente del servicio SS
 - **Principio de menor privilegio**: el nuevo token debe ser de corta duración y con permisos limitados.
 
 ***
-## Explotación de la Vulnerabilidad 2 (Insecure File Exposure | Credentials in Source Code)
+## Explotación de la Vulnerabilidad (Insecure File Exposure | Credentials in Source Code)
 
 Realizando un escaneo de directorios sobre el servicio web aparecen dos directorios a los que no debería haber acceso externo.
 
