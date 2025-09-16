@@ -76,7 +76,7 @@ MAC Address: 02:42:AC:11:00:02 (Unknown)
 
 *-sCV (Scripts básicos y versión de servicios):* "-sC" Paramétro que usa una serie de scrips básicos de reconocimiento de Nmap. "-sV" Parámetro para conocer la versión de las aplicaciones y servicios que corren en un puerto dado.
 
-*-p(puertos):* Detrás de esta flag especificas los puertos que se quieren escanear para acelerar el proceso y buscar simplemente en los puertos interesantes.
+*-p(puertos):* Detrás de esta flag se especifican los puertos que se quieren escanear para acelerar el proceso y buscar simplemente en los puertos interesantes.
 
 *-oN target (Exportar):* Exportar la salida del escaneo en formato Nmap para poder leerlo mejor a un archivo.
 
