@@ -174,7 +174,7 @@ app.listen(port, '0.0.0.0', () => {
 });
 ```
 
-Aparece el puerto en el que está establecido el servicio (3000), la petición post al directorio */recurso/*, confirma la lectura del token exfiltrado anteriormente para aceptar la conexión al recurso, el mensaje en caso de aceptar la conexión (contraseña en texto claro del servicio SSH), y mensaje o código de estado en caso de que el token fuera incorrecto. Además, aparece el DNS de la página web *consolelog.lab*, que acepta conexiones desde cualquier IP, es decir cualquier equipo de la red puede ponerse en escucha en este equipo, lo que se expone completamente en un ataque.
+Aparece la petición post al directorio */recurso/*, confirma la lectura del token exfiltrado anteriormente para aceptar la conexión al recurso, el mensaje en caso de aceptar la conexión (contraseña en texto claro del servicio SSH), y mensaje o código de estado en caso de que el token fuera incorrecto. Además, aparece el DNS de la página web *consolelog.lab*, que acepta conexiones desde cualquier IP, es decir cualquier equipo de la red puede ponerse en escucha en este equipo, lo que se expone completamente en un ataque.
 
 ## Mitigación Vulnerabilidad 2
 
