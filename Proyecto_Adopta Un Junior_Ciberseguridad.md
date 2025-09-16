@@ -115,7 +115,7 @@ curl -X POST http://172.17.0.2:3000/recurso/ -H "Content-Type: application/json"
 lapassworddebackupmaschingonadetodas
 ```
 
-Al usar el token directamente expone una credencial, seguramente del servicio SSH. Cabe añadir que además de este vulnerabilidad, existe otra que expone la misma credencial sin hacer uso de este token de acceso.
+Al usar el token directamente expone una credencial, seguramente del servicio SSH.
 
 ## Mitigación de la Vulnerabilidad 1
 
