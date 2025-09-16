@@ -30,12 +30,19 @@ MAC Address: 02:42:AC:11:00:02 (Unknown)
 ### Parámetros de escaneo general
 
 *-sS (Stealth Scan):* Escaneo "sigiloso" que permite encontrar puertos sin completar el *Three-way handshake*, es decir, no llega a terminar la conexión con la máquina.
+
 *-p- (All ports):* Escanea todos los puertos existentes (65535).
+
 *--open (Puertos abiertos):* Parámetro para especificar que solo presente los puertos abiertos, ya que puden aparecer puertos filtrados que no interesan.
+
 *--min-rate 5000 (Velocidad de escaneo):* Establece la velocidad de paquetes enviados a la máquina, esto nos ayuda a acelerar el proceso de escaneo.
+
 *-vvv (Verbose):* Para que muestre la mayor cantidad de información posible durante el escaneo.
+
 *-n (Resolución DNS):* Evita la resolución DNS para acelerar levemente el escaneo, activado por defecto en Nmap.
+
 *-Pn (Reconocimiento de Hosts):* Evita el reconocimiento de hosts mediante trazas ICMP, activado por defecto en Nmap.
+
 *-oG allports (Exportar):* Exporta la información a un archivo en formate Grepeable o del que se puede extraer información, en este caso allports
 
 En este primer escaneo se encuentran los siguientes puertos:
