@@ -1,4 +1,4 @@
-### Descubrimiento del Endpoint Vulnerable
+## Descubrimiento del Endpoint Vulnerable
 
 Se realiza un ecaneo de puertos general para ver posibles vectores de entrada.
 
@@ -27,7 +27,7 @@ PORT     STATE SERVICE REASON
 MAC Address: 02:42:AC:11:00:02 (Unknown)
 ```
 
-#### Parámetros de escaneo general
+### Parámetros de escaneo general
 
 *-sS (Stealth Scan):* Escaneo "sigiloso" que permite encontrar puertos sin completar el *Three-way handshake*, es decir, no llega a terminar la conexión con la máquina.
 *-p- (All ports):* Escanea todos los puertos existentes (65535).
@@ -65,7 +65,7 @@ PORT     STATE SERVICE VERSION
 MAC Address: 02:42:AC:11:00:02 (Unknown)
 ```
 
-#### Parámetros de escaneo específico
+### Parámetros de escaneo específico
 
 *-sCV (Scripts básicos y versión de servicios):* "-sC" Paramétro que usa una serie de scrips básicos de reconocimiento de Nmap. "-sV" Parámetro para conocer la versión de las aplicaciones y servicios que corren en un puerto dado.
 *-p(puertos):* Detrás de esta flag especificas los puertos que se quieren escanear para acelerar el proceso y buscar simplemente en los puertos interesantes.
@@ -78,7 +78,7 @@ Después de este escaneo se ve más información en los puertos que han aparecid
 - Puerto 5000/tcp (SSH): OpenSSH 9.2p1 Debian 2+deb12u3
 
 ***
-### Reconocimiento y recolección del Endpoint Node.js Vulnerable
+## Reconocimiento y recolección del Endpoint Node.js Vulnerable
 
 Se intenta entrar en el puerto del servicio web del puerto 3000 pero no logra alcanzar el recurso.
 
@@ -97,7 +97,7 @@ Al intentar acceder al directorio */recurso/* no permite la entrada debido a la 
 <img width="611" height="169" alt="Pasted image 20250915131906" src="https://github.com/user-attachments/assets/5fa2b0c0-44c6-4334-b267-88da9389224e" />
 
 ***
-### Explotación de la Vulnerabilidad 1 (Sensitive Data Exposure)
+## Explotación de la Vulnerabilidad 1 (Sensitive Data Exposure)
 
 Se hace uso de la herramienta *cURL*, para ver el contenido del servicio web y confirmando el funcionamiento del Token exfiltrado.
 
@@ -108,7 +108,7 @@ lapassworddebackupmaschingonadetodas
 
 Al usar el token directamente expone una credencial, seguramente del servicio SSH. Cabe añadir que además de este vulnerabilidad, existe otra que expone la misma credencial sin hacer uso de este token de acceso.
 
-### Mitigación de la Vulnerabilidad 1
+## Mitigación de la Vulnerabilidad 1
 
 - **Eliminar el token del código** → nunca debe estar escrito en claro en el script.
 - **Encriptar, hashear y/o eliminar contraseñas y credenciales** → la contraseña aparece en texto claro.
@@ -122,7 +122,7 @@ Al usar el token directamente expone una credencial, seguramente del servicio SS
 - **Principio de menor privilegio**: el nuevo token debe ser de corta duración y con permisos limitados.
 
 ***
-### Explotación de la Vulnerabilidad 2 (Insecure File Exposure | Credentials in Source Code)
+## Explotación de la Vulnerabilidad 2 (Insecure File Exposure | Credentials in Source Code)
 
 Realizando un escaneo de directorios sobre el servicio web aparecen dos directorios a los que no debería haber acceso externo.
 
@@ -168,7 +168,7 @@ app.listen(port, '0.0.0.0', () => {
 
 Aparece el puerto en el que está establecido el servicio (3000), la petición post al directorio */recurso/*, confirma la lectura del token exfiltrado anteriormente para aceptar la conexión al recurso, el mensaje en caso de aceptar la conexión (contraseña en texto claro del servicio SSH), y mensaje o código de estado en caso de que el token fuera incorrecto. Además, aparece el DNS de la página web *consolelog.lab*, que acepta conexiones desde cualquier IP, es decir cualquier equipo de la red puede ponerse en escucha en este equipo, lo que se expone completamente en un ataque.
 
-### Mitigación Vulnerabilidad 2
+## Mitigación Vulnerabilidad 2
 
 Ejemplo de código seguro para Node.js. Crea variables de entorno almacenadas de forma segura para el Token de acceso y el secreto de backup. También establece un límite de tamaño para evitar inyección de payloads demasiado grandes contrarrestando posibles ataques DoS o desbordamientos. Y aplica validación del buffer convirtiendolo en bytes, mediante el uso de la comparación de tiempos para que el atacante no pueda conocer el tamaño del token por duración (*timing attack*) y además se requiren dos buffers del mismo tamaño 
 
@@ -235,7 +235,7 @@ app.listen(port, '0.0.0.0', () => console.log(`Servidor en puerto ${port}`));
 Este código aumenta considerablemente la seguridad del sitio, y por ello al implementarlo existe la oportunidad de suprimir la funcion *authentication.js*, hosteada en el sitio web y en la que aparecía por ejemplo el Token en texto claro. Y para evitar que se expongan carpetas que deberían estar ocultas, esto se puede realizar sin problema en ambos servicios web de los dos puertos, tanto el 80, como el 3000.
 
 ***
-### Buenas prácticas
+## Buenas prácticas
 
 - No hardcodear credenciales ni tokens de acces en el código.
 - No exponer directorios sensibles de cara a Internet.
