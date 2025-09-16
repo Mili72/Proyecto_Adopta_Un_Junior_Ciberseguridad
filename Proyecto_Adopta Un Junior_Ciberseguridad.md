@@ -240,7 +240,7 @@ app.use('/backend', (req, res) => {
 app.listen(port, '0.0.0.0', () => console.log(`Servidor en puerto ${port}`));
 ```
 
-Este código aumenta considerablemente la seguridad del sitio, y por ello al implementarlo existe la oportunidad de suprimir la funcion *authentication.js*, hosteada en el sitio web y en la que aparecía por ejemplo el Token en texto claro. Y para evitar que se expongan carpetas que deberían estar ocultas, esto se puede realizar sin problema en ambos servicios web de los dos puertos, tanto el 80, como el 3000.
+Este código aumenta considerablemente la seguridad del sitio, y por ello al implementarlo existe la oportunidad de suprimir la función *authentication.js*, hosteada en el sitio web y en la que aparecía por ejemplo el Token en texto claro. Y para evitar que se expongan carpetas que deberían estar ocultas, esto se puede realizar sin problema en ambos servicios web de los dos puertos, tanto el 80, como el 3000.
 
 ***
 ## Buenas prácticas
